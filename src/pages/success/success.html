@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar color="customGreen">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Transaction Complete</ion-title>
+  </ion-navbar>
+</ion-header>
+    
+<ion-content padding>
+  <p>
+    Thanks, {{user.fullname}} for your custom. 
+  </p>
+  <p>
+    We have taken a payment of {{cart?.total | currency:"£"}}.
+  </p>
+  <p>
+    A confirmation email to <i>{{user.email}}</i> will arrive shortly.
+  </p>
+  <button ion-button full (click)="goBack() ">Continue</button>
+</ion-content>

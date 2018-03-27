@@ -1,0 +1,15 @@
+
+<ion-header>
+  <ion-navbar color="customGreen">
+      <ion-title>Authentication Mode</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <button ion-button full (click)="passportLogin()" color="primary" class="login-button">Use Passport.js Authentication</button>
+  <br>
+  <button ion-button full (click)="auth0Login()" color="secondary" class="login-button">Use Auth0 Authentication</button>
+  <br>
+  <button ion-button full (click)="firebaseLogin()" color="danger" class="login-button">Use Firebase Authentication</button>
+</ion-content>

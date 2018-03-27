@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar color="customGreen">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>My Cart</ion-title>
+  </ion-navbar>
+</ion-header>
+  
+<ion-content>
+
+  <ion-list *ngIf="!noCart">
+      <ion-item *ngFor="let item of items" >
+        <ion-thumbnail item-left>
+            <img src="{{url}}images/{{item.cover}}">
+        </ion-thumbnail>
+        <h6>{{item.title}}</h6>
+        <p><small><b>Quantity: </b>{{item.quantity}} <b>Price: </b>{{item.price | currency:"£"}}</small></p>
+        <p><small><b>Total: </b>{{item.total | currency:"£"}}</small></p>
+        <button ion-button item-right (click)="removeOne($event, item)">
+          <ion-icon name="remove-circle"></ion-icon>
+        </button>
+        <button ion-button item-right color="danger"(click)="addAnotherOne($event, item)" [disabled]="checkQty(item)">
+            <ion-icon name="add-circle"></ion-icon>
+        </button>
+      </ion-item>
+      <ion-item>
+        <h6><b>Total Price: </b> {{cart?.total | currency:"£"}}</h6>
+        <button ion-button item-right color="secondary" (click)="checkOut()">Buy Now</button>
+      </ion-item>
+      <ion-item *ngIf="noCart">
+        <h6>There are no items in your cart</h6>
+      </ion-item>
+  </ion-list>
+  <ion-list *ngIf="noCart">
+    <ion-item>
+      <h6>There are no items in your cart</h6>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

@@ -1,0 +1,19 @@
+page-add-update-book {
+    .centerit{
+        text-align: center;
+    }
+    /* img {
+        max-width:200px;
+        max-height:400px;
+        width: auto;
+        height: auto;
+    } */
+    ion-card {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .hidden {
+        display: none;
+    }
+}

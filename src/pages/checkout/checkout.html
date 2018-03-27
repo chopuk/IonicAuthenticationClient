@@ -1,0 +1,151 @@
+<ion-header>
+    <ion-navbar color="customGreen">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Checkout</ion-title>
+    </ion-navbar>
+  </ion-header>
+    
+  <ion-content>
+
+    <ion-card>
+        <ion-card-header>
+            <b class="sheader">Order Summary</b>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-list>
+                <ion-item *ngFor="let item of items" >
+                    <p>
+                        {{item.title}}:
+                        <span>
+                        <small> 
+                            {{item.quantity}} @ {{item.price | currency:"£"}} -
+                            Total: {{item.total | currency:"£"}}
+                        </small>
+                        </span>
+                    </p>
+                </ion-item>
+                <ion-item>
+                    <h6><b>Total Price: </b> {{cart?.total | currency:"£"}}</h6>
+                </ion-item>
+        </ion-list>
+        </ion-card-content>
+       
+    </ion-card>
+
+    <ion-card>
+        <ion-card-header>
+            <b class="sheader">Your Details</b>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-list>
+                <ion-item>
+                    <ion-row>
+                        <ion-col>
+                            <b>Name:</b>
+                        </ion-col>
+                        <ion-col>
+                            {{user.fullname}}
+                        </ion-col>
+                    </ion-row>
+                </ion-item>
+                <ion-item>
+                     <ion-row>
+                        <ion-col>
+                            <b>Email:</b>
+                        </ion-col>
+                        <ion-col>
+                            {{user.email}}
+                        </ion-col>
+                    </ion-row>
+                </ion-item>
+                <ion-item>
+                     <ion-row>
+                        <ion-col>
+                            <b>Address:</b>
+                        </ion-col>
+                        <ion-col>
+                            {{user.address}}
+                        </ion-col>
+                    </ion-row>
+                </ion-item>
+                <ion-item>
+                    <ion-row>
+                        <ion-col>
+                            <b>Post Town:</b>
+                        </ion-col>
+                        <ion-col>
+                            {{user.posttown}}
+                        </ion-col>
+                    </ion-row>
+                </ion-item>
+                <ion-item>
+                    <ion-row>
+                        <ion-col>
+                            <b>Postcode:</b>
+                        </ion-col>
+                        <ion-col>
+                            {{user.postcode}}
+                        </ion-col>
+                    </ion-row>
+                </ion-item>
+            </ion-list>
+        </ion-card-content>
+            
+    </ion-card>
+
+    <ion-card>
+
+        <ion-card-header>
+            <b class="sheader">Payment Details</b>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-list>
+                <ion-item>
+                    <ion-input [(ngModel)]="cardinfo.number" placeholder="Card Number" type="text"></ion-input>
+                </ion-item>
+            
+                <ion-item>
+                    <ion-label>Expiry Month</ion-label>
+                    <ion-select [(ngModel)]="cardinfo.expMonth">
+                        <ion-option value="01">January</ion-option>
+                        <ion-option value="02">February</ion-option>
+                        <ion-option value="03">March</ion-option>
+                        <ion-option value="04">April</ion-option>
+                        <ion-option value="05">May</ion-option>
+                        <ion-option value="06">June</ion-option>
+                        <ion-option value="07">July</ion-option>
+                        <ion-option value="08">August</ion-option>
+                        <ion-option value="09">Septmaber</ion-option>
+                        <ion-option value="10">October</ion-option>
+                        <ion-option value="11">November</ion-option>
+                        <ion-option value="12">December</ion-option>
+                    </ion-select>
+                </ion-item>
+            
+                <ion-item>
+                    <ion-label>Expiry Year</ion-label>
+                    <ion-select [(ngModel)]="cardinfo.expYear">
+                        <ion-option value="2018">2018</ion-option>
+                        <ion-option value="2019">2019</ion-option>
+                        <ion-option value="2020">2020</ion-option>
+                        <ion-option value="2021">2021</ion-option>
+                        <ion-option value="2022">2022</ion-option>
+                        <ion-option value="2023">2023</ion-option>
+                    </ion-select>
+                </ion-item>
+            
+                <ion-item>
+                    <ion-input [(ngModel)]="cardinfo.cvc" placeholder="CVC" type="text"></ion-input>
+                </ion-item>
+            </ion-list>
+        </ion-card-content>
+        <div id="errormessage" *ngIf="showMessage" class="fadeIn">
+            {{errorMessage}}
+        </div>
+    </ion-card>
+    
+    <button ion-button full (click)="buyNow()">Confirm & Pay</button>
+ 
+</ion-content>

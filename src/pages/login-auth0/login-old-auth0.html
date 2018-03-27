@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar color="customGreen">
+      <ion-title>Auth0 Access</ion-title>
+      <ion-buttons end>
+        <button ion-button icon-only (click)="back()"><ion-icon name="arrow-dropleft-circle"></ion-icon></button>
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+
+    <div *ngIf="!auth.isAuthenticated()">
+        <button ion-button full (click)="auth.login()" color="secondary" class="login-button">Login</button>
+    </div>
+
+    <div *ngIf="auth.isAuthenticated()"> 
+        <page-home></page-home>
+        <ion-card>
+          <img [src]="auth.user.picture" />
+          <ion-card-content>
+            <ion-card-title>{{ auth.user.name }}</ion-card-title>
+          </ion-card-content>
+        </ion-card>
+        <button ion-button block color="secondary" (click)="getAccessToken()">Get Access Token</button>
+        <button ion-button block color="secondary" (click)="updateProfile()">Update Profile</button>
+        <button ion-button block color="secondary" (click)="auth.logout()">Logout</button>
+        <p>Country: {{auth.user.user_metadata.country}}</p>
+        <p>User Id: {{auth.user.identities[0].user_id}}</p>
+    </div> 
+  
+</ion-content>

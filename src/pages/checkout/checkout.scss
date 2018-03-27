@@ -1,0 +1,29 @@
+page-checkout {
+    .sheader {
+        color: blue;
+    }
+    ion-label {
+        padding-left:9px !important;
+    }
+    ion-input {
+        text-align: right !important;
+    }
+    .fadeIn {
+        animation-name: fadeIn;
+        animation-duration: 2s;
+    }
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+    #errormessage {
+        color: red;
+        font-weight: bold;
+        text-align: center;
+    }
+}

@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar color="customGreen">
+      <ion-title>Firebase Access</ion-title>
+      <ion-buttons end>
+        <button ion-button icon-only (click)="back()"><ion-icon name="arrow-dropleft-circle"></ion-icon></button>
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-row class="login-form" *ngIf="!isAuthenticated">
+    <ion-col>
+      <ion-list inset>
+
+        <ion-item>
+          <ion-label><ion-icon name="mail"></ion-icon></ion-label>
+          <ion-input [(ngModel)]="email" placeholder="email" type="email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label><ion-icon name="lock"></ion-icon></ion-label>
+          <ion-input [(ngModel)]="password" placeholder="password" type="password"></ion-input>
+        </ion-item>
+
+      </ion-list>
+
+      <button ion-button full (click)="login()" color="primary" class="login-button">Login</button>
+
+    </ion-col>
+  </ion-row>
+
+  <ion-row *ngIf="!isAuthenticated">
+      <ion-col>
+          <button ion-button full (click)="launchSignup()" class="create-account">Create an Account</button>
+      </ion-col>
+  </ion-row>
+
+  <page-home></page-home>
+
+</ion-content>
+

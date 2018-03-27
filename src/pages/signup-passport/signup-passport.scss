@@ -1,0 +1,34 @@
+.ios, .md {
+ 
+    page-signup-passport {
+
+        .centerit {
+            text-align: center;
+        }
+
+        ion-select {
+            max-width: 100% !important;
+        }
+
+        ion-list {
+            margin: 0;
+        }
+
+        .fadeIn {
+            animation-name: fadeIn;
+            animation-duration: 2s;
+        }
+
+        @keyframes fadeIn {
+            from {
+              opacity: 0;
+            }
+        
+            to {
+              opacity: 1;
+            }
+          }
+    }
+ 
+}
+

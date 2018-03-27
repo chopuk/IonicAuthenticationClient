@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar color="customGreen">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Book Details</ion-title>
+  </ion-navbar>
+ </ion-header>
+
+<ion-content>
+  <ion-card>
+    <div id="flexit">
+      <img src="{{url}}images/{{book.cover}}"/>
+    </div>
+    <ion-card-content>
+      <ion-row>
+        <ion-card-title>
+            {{book.title}}
+        </ion-card-title>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+            <p><b>Author:</b> {{book.author}}</p>
+        </ion-col>
+        <ion-col>
+            <p><b>Publisher:</b> {{book.publisher}}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+            <p><b>Quantity:</b> {{book.quantity}}</p>
+        </ion-col>
+        <ion-col>
+            <p><b>Price:</b> {{book.price | currency:"£"}}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+          <ion-col>
+              <p><b>Category:</b> {{book.category}}</p>
+          </ion-col>
+          <ion-col>
+              <p id="mine" [style.color]="checkQuantity(book.quantity)">{{inventory}}</p>
+          </ion-col>
+        </ion-row>
+      <hr>
+      <p>{{book.description}}</p>
+    </ion-card-content>
+  </ion-card>
+  <button ion-button full [disabled]="noStock || notPassport" (click)="addToCart() ">Add To Cart</button>
+</ion-content>

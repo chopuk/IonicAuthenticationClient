@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-navbar color="customGreen">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{pageTitle}}</ion-title>
+  </ion-navbar>
+ </ion-header>
+
+<ion-content>
+  <form [formGroup]="bookForm">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Title</ion-label>
+        <ion-input type="text" formControlName="title"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Description</ion-label>
+        <ion-input type="text" formControlName="description"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Author</ion-label>
+        <ion-input type="text" formControlName="author"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Publisher</ion-label>
+        <ion-input type="text" formControlName="publisher"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Price</ion-label>
+        <ion-input type="number" formControlName="price"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Quantity</ion-label>
+        <ion-input type="number" formControlName="quantity"></ion-input>
+      </ion-item>
+      <ion-item class="hidden">
+        <ion-label floating>Cover</ion-label>
+        <ion-input type="text" formControlName="cover"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Category:</ion-label>
+        <ion-select formControlName="category">
+          <ion-option *ngFor="let category of categories">{{category.name}}</ion-option>
+        </ion-select>
+      </ion-item>
+      
+    </ion-list>
+    <hr>
+    <button ion-button full (click)="presentActionSheet('FileTranser')">{{coverText}} with FileTransfer</button>
+    <button ion-button full (click)="presentActionSheet('XMLHttpRequest')">{{coverText}} with XMLHttpRequest</button>
+    <ion-card>
+      <img src="{{url}}images/{{book.cover}}" *ngIf="displayImage"/>
+      <img src="{{imageURI}}" *ngIf="imageSelected_File_URI"/>
+      <img [src]="domSanitizer.bypassSecurityTrustUrl(imageData)" *ngIf="imageSelected_Data_URL"/>
+    </ion-card>
+    <hr>
+    <button ion-button full [disabled]="!bookForm.valid" (click)="addToLibrary()">{{buttonText}}</button>
+  </form>
+
+</ion-content>
