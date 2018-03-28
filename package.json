@@ -32,7 +32,7 @@
     "angular2-jwt": "^0.2.3",
     "angularfire2": "^5.0.0-rc.6",
     "animate.css": "^3.6.1",
-    "auth0-js": "^9.2.2",
+    "auth0-js": "^9.4.1",
     "com-badrit-base64": "^0.2.0",
     "cordova-android": "7.0.0",
     "cordova-browser": "5.0.3",
